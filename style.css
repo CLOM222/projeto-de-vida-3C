@@ -38,5 +38,6 @@ body{
     font-family: "Chakra Petch", sans-serif;
     background-color:  var(--botao-inativo);
     color: var(--branco);
+    display: flex;
     
 }
