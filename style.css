@@ -1,58 +1,101 @@
-const botoes = document.querySelectorAll(".botao");
-const textos = document.querySelectorAll(".aba-conteudo");
-
-for (let i = 0; i < botoes.length; i++) {
-    botoes[i].onclick = function () {
-
-        for (let j = 0; j < botoes.length; j++) {
-            botoes[j].classList.remove("ativo");
-            textos[j].classList.remove("ativo");
-        }
-
-        botoes[i].classList.add("ativo");
-        textos[i].classList.add("ativo");
-    }
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap&#39;);
+*{
+    padding: 0;
+    margin: 0;
 }
 
-const contadores = document.querySelectorAll(".contador");
-const tempoObjetivo1 = new Date("2023-10-05T00:00:00");
-const tempoObjetivo2 = new Date("2023-12-05T00:00:00");
-const tempoObjetivo3 = new Date("2023-12-30T00:00:00");
-const tempoObjetivo4 = new Date("2024-02-01T00:00:00");
-
-const tempos = [tempoObjetivo1,tempoObjetivo2,tempoObjetivo3,tempoObjetivo4];
-
-
-function calculaTempo(tempoObjetivo) {
-    let tempoAtual = new Date();
-    let tempoFinal = tempoObjetivo - tempoAtual;
-    let segundos = Math.floor(tempoFinal / 1000);
-    let minutos = Math.floor(segundos / 60);
-    let horas = Math.floor(minutos / 60);
-    let dias = Math.floor(horas / 24);
-
-    segundos %= 60;
-    minutos %= 60;
-    horas %= 24;
-    if (tempoFinal > 0){
-        return [dias,horas,minutos,segundos];
-    } else {
-        return [0,0,0,0];
-    }
+html{
+    font-size: 20px;
+    font-family: "Chakra Petch", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    background-color: #02010E;
 }
 
-function atualizaCronometro(){
-    for (let i=0; i<contadores.length;i++){
-        document.getElementById("dias"+i).textContent = calculaTempo(tempos[i])[0];
-        document.getElementById("horas"+i).textContent = calculaTempo(tempos[i])[1];
-        document.getElementById("min"+i).textContent = calculaTempo(tempos[i])[2];
-        document.getElementById("seg"+i).textContent = calculaTempo(tempos[i])[3];  
-    }
+.conteudo-principal{
+    color: white;
+    width: 65%;
+    height: 100%;
+    margin: 60px auto 0px auto;
 }
 
-function comecaCronometro(){
-    atualizaCronometro();
-    setInterval(atualizaCronometro,1000);
+.titulo-principal{
+    margin-bottom: 30px;
+    font-size: 1rem;
 }
 
-comecaCronometro();
+.botoes{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.botao{
+    cursor: pointer;
+    border: 0;
+    border-bottom: 5px solid #3a375e;
+    width: 25%;
+    padding: 30px;
+    background-color: #201d3b;
+    color: white;
+}
+
+
+
+#hover{
+    border-bottom: 5px solid #6FFF57;
+    background-color: #3a375e !important;
+}
+
+.botao--first{
+    border-top-left-radius: 30px;
+}
+
+.botao--last{
+    border-top-right-radius: 30px;
+}
+
+.Tcontent{
+    text-align: center;
+    margin-top: 50px;
+}
+
+.Tcontent h2{
+    margin-top: 80px;
+    margin-bottom: 20px;
+    font-size: .65rem;
+    color: #6FFF57;
+}
+
+.conteudo{
+    background-color: #161429;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-bottom: 150px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.timer{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.date{
+    text-align: center;
+}
+
+.date .number{
+    font-size: 3.5rem;
+}
+
+.date .desc{
+    font-size: 1rem;
+    font-weight: normal;
+    color: #6FFF57;
+}
